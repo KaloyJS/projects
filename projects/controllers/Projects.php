@@ -50,13 +50,13 @@ class Projects extends BackendController
         $this->load->library('session');
 		
 		if($this->session->has_userdata(PORTAL_NAME.'portal')){
-            $this->sbegn_u_name = $this->session->userdata(PORTAL_NAME.'uname');
-            $this->sbegn_role = $this->session->userdata(PORTAL_NAME.'role');
-            $this->sbegn_account = $this->session->userdata(PORTAL_NAME.'account');
-            $this->sbegn_badge = $this->session->userdata(PORTAL_NAME.'badge');
-            $this->sbegn_fname = $this->session->userdata(PORTAL_NAME.'fname');
-            $this->sbegn_lname = $this->session->userdata(PORTAL_NAME.'lname');
-            $this->sbegn_access = $this->session->userdata(PORTAL_NAME.'access');			
+		    $this->sbegn_u_name = $this->session->userdata(PORTAL_NAME.'uname');
+		    $this->sbegn_role = $this->session->userdata(PORTAL_NAME.'role');
+		    $this->sbegn_account = $this->session->userdata(PORTAL_NAME.'account');
+		    $this->sbegn_badge = $this->session->userdata(PORTAL_NAME.'badge');
+		    $this->sbegn_fname = $this->session->userdata(PORTAL_NAME.'fname');
+		    $this->sbegn_lname = $this->session->userdata(PORTAL_NAME.'lname');
+		    $this->sbegn_access = $this->session->userdata(PORTAL_NAME.'access');			
 		}else{
 			// If user not logged in create a url in the Session super global so after login in would			
 			session_start();
@@ -77,7 +77,7 @@ class Projects extends BackendController
     {
 		
 
-		$this->data['projects']= $this->Projects_model->getProjects();
+	$this->data['projects']= $this->Projects_model->getProjects();
         $this->data['assigneeList'] = $this->Projects_model->getAssigneeList();
         $this->template2('projects/projects', $this->data, true, 'projects/projects/js');
         
