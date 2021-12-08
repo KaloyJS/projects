@@ -1,30 +1,12 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- * CodeIgniter-HMVC-AdminLTE
- *
- * @package    CodeIgniter-HMVC-AdminLTE
- * @author     N3Cr0N (N3Cr0N@list.ru)
- * @copyright  2019 N3Cr0N
- * @license    https://opensource.org/licenses/MIT  MIT License
- * @link       <URI> (description)
- * @version    GIT: $Id$
- * @since      Version 0.0.1
- * @todo       (description)
- *
- */
+
 
 class Projects extends BackendController
 {
     //
     public $CI;
-	// public $sbegn_u_name;
-	// public $sbegn_role;
-	// public $sbegn_account;
-	// public $sbegn_badge;
-	// public $sbegn_fname;
-	// public $sbegn_lname;
-	// public $sbegn_access;
+
     /**
      * An array of variables to be passed through to the
      * view, layouts, ....
@@ -44,25 +26,25 @@ class Projects extends BackendController
         // Normally, to call any of the available CodeIgniter object or pre defined library classes then you need to declare.
 	
         $CI =& get_instance();
-		$this->load->model('Projects_model');
-		$this->load->library('form_validation');
+	$this->load->model('Projects_model');
+	$this->load->library('form_validation');
         //Load session library 
         $this->load->library('session');
 		
-		if($this->session->has_userdata(PORTAL_NAME.'portal')){
-		    $this->sbegn_u_name = $this->session->userdata(PORTAL_NAME.'uname');
-		    $this->sbegn_role = $this->session->userdata(PORTAL_NAME.'role');
-		    $this->sbegn_account = $this->session->userdata(PORTAL_NAME.'account');
-		    $this->sbegn_badge = $this->session->userdata(PORTAL_NAME.'badge');
-		    $this->sbegn_fname = $this->session->userdata(PORTAL_NAME.'fname');
-		    $this->sbegn_lname = $this->session->userdata(PORTAL_NAME.'lname');
-		    $this->sbegn_access = $this->session->userdata(PORTAL_NAME.'access');			
-		}else{
-			// If user not logged in create a url in the Session super global so after login in would			
-			session_start();
-			$_SESSION['url'] = $_SERVER['REQUEST_URI']; 			
-            redirect('login', 'refresh'); 
-		}
+	if($this->session->has_userdata(PORTAL_NAME.'portal')){
+	    $this->sbegn_u_name = $this->session->userdata(PORTAL_NAME.'uname');
+	    $this->sbegn_role = $this->session->userdata(PORTAL_NAME.'role');
+	    $this->sbegn_account = $this->session->userdata(PORTAL_NAME.'account');
+	    $this->sbegn_badge = $this->session->userdata(PORTAL_NAME.'badge');
+	    $this->sbegn_fname = $this->session->userdata(PORTAL_NAME.'fname');
+	    $this->sbegn_lname = $this->session->userdata(PORTAL_NAME.'lname');
+	    $this->sbegn_access = $this->session->userdata(PORTAL_NAME.'access');			
+	}else{
+	    // If user not logged in create a url in the Session super global so after login in would			
+	    session_start();
+	    $_SESSION['url'] = $_SERVER['REQUEST_URI']; 			
+	    redirect('login', 'refresh'); 
+	}
 		
     }
 
