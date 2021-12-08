@@ -6,22 +6,18 @@ class Projects_model extends MY_Model {
         public $date;
 
 
-        public function getProjects(){
-        	
+        public function getProjects(){        	
             $qry = "SELECT TO_CHAR(created_on, 'YYYY/MM/DD') as created_on, project_id, project_name, assignee, status, progress, priority, scope FROM SBE_PROJECTS
                 WHERE DELETED IS NULL
                 ORDER BY STATUS DESC, CREATED_ON DESC";
-        	$query = $this->db->query($qry);        	
-        	return $query->result_array();
-
+            $query = $this->db->query($qry);        	
+            return $query->result_array();
         }
 
-        public function getQuery(){
-                
+        public function getQuery(){                
             $query = $this->db->get_compiled_select('SBE_PROJECTS');
             $this->db->order_by(date_ins, 'DESC');
             return $query;
-
         }
 
         public function getAssigneeList(){
@@ -37,8 +33,8 @@ class Projects_model extends MY_Model {
             FROM SBE_PROJECTS 
             where project_id = '$id' 
             ORDER BY STATUS DESC";        	
-        	$query = $this->db->query($qry);        	
-        	return $query->result();
+	    $query = $this->db->query($qry);        	
+	    return $query->result();
         }
 
         public function get_activities_by_pid($id){
@@ -49,15 +45,14 @@ class Projects_model extends MY_Model {
             return $query->result();
         }
 
-        public function get_next_seq($seqname){
-        
+        public function get_next_seq($seqname){        
             $qry = "SELECT ".$seqname.".NEXTVAL  FROM DUAL";
             $query = $this->db->query($qry);
             $nextValArray = $query->row();
             return $nextValArray->NEXTVAL;
         }
 		
-	    public function insertData($data){
+	public function insertData($data){
             return $this->db->insert('SBE_PROJECTS', $data);
         }	
 		
